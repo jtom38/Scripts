@@ -179,7 +179,7 @@ Function Get-UsersFromGroups
 
 	#Send-MailMessage -SmtpServer $_EmailServer -from $_EmailFrom -to $_EmailTo -Cc $_EmailCC -Subject "Allocations List $_CurrentMonth $((Get-Date).Year)" -Body $_EmailBody -Attachments $t
 
-	Send-MailMessage -SmtpServer $_EmailServer -from $_EmailFrom -to tkeech@ruralcap.com -Subject "Allocations List $_CurrentMonth $((Get-Date).Year)" -Body $_EmailBody -Attachments $t
+	Send-MailMessage -SmtpServer $_EmailServer -from $_EmailFrom -to $_EmailTo -Subject "Allocations List $_CurrentMonth $((Get-Date).Year)" -Body $_EmailBody -Attachments $t
 }
 
 #Script logic flow
