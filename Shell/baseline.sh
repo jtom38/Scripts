@@ -23,13 +23,9 @@ rm mongodb-compass-community_1.14.6_amd64.deb
 #varitey - wallpaper switcher
 sudo add-apt-repository ppa:peterlevi/ppa
 
-#Needed for Albert
-#its like spotlight for OSX
-sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_18.04/ /' > /etc/apt/sources.list.d/home:manuelschneid3r.list"
-
 sudo apt-get update
 
-sudo apt-get install snapd node.js npm git variety variety-slideshow albert -y
+sudo apt-get install snapd node.js npm git variety variety-slideshow -y
 
 #Snaps are built to auto update
 #might move docker to apt
