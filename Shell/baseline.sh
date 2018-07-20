@@ -25,11 +25,11 @@ sudo add-apt-repository ppa:peterlevi/ppa -y
 
 sudo apt-get update
 
-sudo apt-get install snapd node.js npm git variety variety-slideshow -y
+sudo apt-get install snapd node.js npm git variety variety-slideshow gnome-tweaks -y
 
 #Snaps are built to auto update
 #might move docker to apt
-sudo snap install discord spotify docker
+sudo snap install discord spotify docker cpufreq
 
 #Remove not needed packs
 sudo apt-get remove rhythmbox firefox thunderbird -y
