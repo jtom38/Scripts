@@ -23,9 +23,13 @@ rm mongodb-compass-community_1.14.6_amd64.deb
 #varitey - wallpaper switcher
 sudo add-apt-repository ppa:peterlevi/ppa -y
 
+# OSX-like icons - anything is better then ubuntu icons I think
+# https://github.com/keeferrourke/la-capitaine-icon-theme/
+sudo add-apt-repository ppa:dyatlov-igor/la-capitaine -y
+
 sudo apt-get update
 
-sudo apt-get install snapd node.js npm git variety variety-slideshow gnome-tweaks -y
+sudo apt-get install snapd node.js npm git variety variety-slideshow gnome-tweaks la-capitaine-icon-theme -y
 
 #Snaps are built to auto update
 #might move docker to apt
