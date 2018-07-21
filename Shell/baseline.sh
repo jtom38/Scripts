@@ -29,7 +29,18 @@ sudo add-apt-repository -u ppa:snwh/ppa -y
 
 sudo apt-get update
 
-sudo apt-get install snapd node.js npm git variety variety-slideshow gnome-tweaks moka-icon-theme faba-icon-theme faba-mono-icons -y
+sudo apt-get install snapd node.js npm git variety variety-slideshow gnome-tweaks moka-icon-theme faba-icon-theme faba-mono-icons dconf-tools -y
+
+# Adjust Ubuntu Dock
+# https://linuxconfig.org/how-to-customize-dock-panel-on-ubuntu-18-04-bionic-beaver-linux
+gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM
+gsettings set org.gnome.shell.extensions.dash-to-dock transparency-mode FIXED
+gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 64
+gsettings set org.gnome.shell.extensions.dash-to-dock unity-backlit-items true
+
+# Did this break something?  We can reset it
+# gsettings reset org.gnome.shell.extensions.dash-to-dock dash-max-icon-size
 
 #Snaps are built to auto update
 #might move docker to apt
