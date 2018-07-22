@@ -46,5 +46,20 @@ gsettings set org.gnome.shell.extensions.dash-to-dock unity-backlit-items true
 #might move docker to apt
 sudo snap install discord spotify docker cpufreq
 
+# cpuFreq Gnome Extension
+# https://extensions.gnome.org/extension/1082/cpufreq/
+wget https://raw.githubusercontent.com/konkor/cpufreq/master/install.sh
+chmod 777 install.sh
+./install.sh
+rm ./install.sh
+
+# Generate web apps
+sudo npm install nativefier -g
+mkdir ./webapps
+cd ./webapps
+nativefier --name "OneNote" https://www.onenote.com/hrd?wdorigin=ondcauth2&wdorigin=ondcnotebooks
+nativefier --name "Asana" https://app.asana.com/app/asana/-/login
+nativefier --name "LastPass" https://lastpass.com/&ac=1&lpnorefresh=1&fromwebsite=1&newvault=1&nk=1
+
 #Remove not needed packs
 sudo apt-get remove rhythmbox firefox thunderbird -y
