@@ -29,7 +29,15 @@ sudo add-apt-repository -u ppa:snwh/ppa -y
 
 sudo apt-get update
 
-sudo apt-get install snapd node.js npm git variety variety-slideshow gnome-tweaks moka-icon-theme faba-icon-theme faba-mono-icons dconf-tools -y
+sudo apt-get install snapd -y 
+sudo apt-get install node.js -y 
+sudo apt-get install npm -y
+sudo apt-get install git -y
+sudo apt-get install variety variety-slideshow -y
+sudo apt-get install gnome-tweaks -y
+sudo apt-get install moka-icon-theme faba-icon-theme faba-mono-icons 
+sudo apt-get install dconf-tools -y
+sudo apt-get install gimp -y
 
 # Adjust Ubuntu Dock
 # https://linuxconfig.org/how-to-customize-dock-panel-on-ubuntu-18-04-bionic-beaver-linux
