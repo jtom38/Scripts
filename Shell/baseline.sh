@@ -51,6 +51,11 @@ wget -O vscode.deb "https://go.microsoft.com/fwlink/?LinkID=760868"
 sudo dpkg -i vscode.deb
 rm vscode.deb
 
+# Atom Editor
+wget -O atom.deb "https://atom.io/download/deb"
+sudo dpkg -i atom.deb
+rm atom.deb
+
 #varitey - wallpaper switcher
 sudo add-apt-repository ppa:peterlevi/ppa -y
 
@@ -61,13 +66,13 @@ sudo add-apt-repository -u ppa:snwh/ppa -y
 sudo apt-get update
 
 sudo apt-get install curl -y
-sudo apt-get install snapd -y 
-sudo apt-get install node.js -y 
+sudo apt-get install snapd -y
+sudo apt-get install node.js -y
 sudo apt-get install npm -y
 sudo apt-get install git -y
 sudo apt-get install variety variety-slideshow -y
 sudo apt-get install gnome-tweaks -y
-sudo apt-get install moka-icon-theme faba-icon-theme faba-mono-icons 
+sudo apt-get install moka-icon-theme faba-icon-theme faba-mono-icons
 sudo apt-get install dconf-tools -y
 sudo apt-get install gimp -y
 sudo apt-get install spotify-client -y
@@ -97,12 +102,12 @@ chmod 777 install.sh
 rm ./install.sh
 
 # Generate web apps
-sudo npm install nativefier -g
-mkdir ./webapps
-cd ./webapps
-nativefier --name "OneNote" https://www.onenote.com/hrd?wdorigin=ondcauth2&wdorigin=ondcnotebooks
-nativefier --name "Asana" https://app.asana.com/app/asana/-/login
-nativefier --name "LastPass" https://lastpass.com/&ac=1&lpnorefresh=1&fromwebsite=1&newvault=1&nk=1
+#sudo npm install nativefier -g
+#mkdir ./webapps
+#cd ./webapps
+#nativefier --name "OneNote" https://www.onenote.com/hrd?wdorigin=ondcauth2&wdorigin=ondcnotebooks
+#nativefier --name "Asana" https://app.asana.com/app/asana/-/login
+#nativefier --name "LastPass" https://lastpass.com/&ac=1&lpnorefresh=1&fromwebsite=1&newvault=1&nk=1
 
 #Remove not needed packs
 sudo apt-get remove rhythmbox firefox thunderbird -y
