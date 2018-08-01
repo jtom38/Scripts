@@ -1,7 +1,7 @@
 
 
-#Dependancies
-#.net core 2.1
+
+# .net core 2.1
 wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
 rm packages-microsoft-prod.deb
@@ -9,12 +9,12 @@ sudo apt-get install apt-transport-https -y
 sudo apt-get update
 sudo apt-get install dotnet-sdk-2.1 -y
 
-#teamviewer install
+# Teamviewer install
 wget https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
 sudo dpkg -i teamviewer_amd64.deb #will be missing depandies
 sudo apt --fix-broken instal #will now fix them
 
-#MongoDb Atlus
+# MongoDb Atlus
 wget https://downloads.mongodb.com/compass/mongodb-compass-community_1.14.6_amd64.deb
 sudo dpkg -i mongodb-compass-community_1.14.6_amd64.deb
 sudo apt --fix-broken install
@@ -51,10 +51,8 @@ wget -O vscode.deb "https://go.microsoft.com/fwlink/?LinkID=760868"
 sudo dpkg -i vscode.deb
 rm vscode.deb
 
-# Atom Editor
-wget -O atom.deb "https://atom.io/download/deb"
-sudo dpkg -i atom.deb
-rm atom.deb
+# Rider - C# IDE
+wget https://download.jetbrains.com/rider/JetBrains.Rider-2018.1.3.tar.gz
 
 #varitey - wallpaper switcher
 sudo add-apt-repository ppa:peterlevi/ppa -y
@@ -78,6 +76,7 @@ sudo apt-get install gimp -y
 sudo apt-get install spotify-client -y
 sudo apt-get install docker-compose -y
 sudo apt-get install signal-desktop -y
+sudo apt-get install make -y
 
 # Adjust Ubuntu Dock
 # https://linuxconfig.org/how-to-customize-dock-panel-on-ubuntu-18-04-bionic-beaver-linux
@@ -89,6 +88,16 @@ gsettings set org.gnome.shell.extensions.dash-to-dock unity-backlit-items true
 
 # Did this break something?  We can reset it
 # gsettings reset org.gnome.shell.extensions.dash-to-dock dash-max-icon-size
+
+# Gnome Topbar fix
+git clone https://github.com/phocean/TopIcons-plus.git
+cd TopIcons-plus
+make install
+sudo make install INSTALL_PATH=/usr/share/gnome-shell/extensions
+cd ..
+rm TopIcons-plus -r -f
+
+echo "Gnome Topbar fix has been installed.  Logout and login again then check gnome-tweak for the fix."
 
 #Snaps are built to auto update
 #might move docker to apt
@@ -111,3 +120,6 @@ rm ./install.sh
 
 #Remove not needed packs
 sudo apt-get remove rhythmbox firefox thunderbird -y
+
+# Check for updates
+sudo apt-get upgrade -y
