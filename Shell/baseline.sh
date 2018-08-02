@@ -71,6 +71,12 @@ sudo add-apt-repository ppa:peterlevi/ppa -y
 # https://snwh.org/moka/download
 sudo add-apt-repository -u ppa:snwh/ppa -y
 
+# Steam
+wget https://steamcdn-a.akamaihd.net/client/installer/steam.deb
+sudo gdpk -i steam.deb
+sudo apt --fix-broken install -y
+rm steam.deb
+
 sudo apt-get update
 
 sudo apt-get install snapd -y
