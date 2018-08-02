@@ -11,25 +11,27 @@ sudo apt-get install dotnet-sdk-2.1 -y
 
 # Teamviewer install
 wget https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
-sudo dpkg -i teamviewer_amd64.deb #will be missing depandies
-sudo apt --fix-broken instal #will now fix them
+sudo dpkg -i teamviewer_amd64.deb 
+sudo apt --fix-broken install -y
+rm teamviewer_amd64.deb
 
 # MongoDb Atlus
 wget https://downloads.mongodb.com/compass/mongodb-compass-community_1.14.6_amd64.deb
 sudo dpkg -i mongodb-compass-community_1.14.6_amd64.deb
-sudo apt --fix-broken install
+sudo apt --fix-broken install -y
 rm mongodb-compass-community_1.14.6_amd64.deb
 
 # Google Chrome
 # I am use to this :V
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome*.deb
+sudo apt-get --fix-broken install -y
 rm google-chrome-stable_current_amd64.deb
 
 # Discord
 wget -O discord.deb "https://discordapp.com/api/download?platform=linux&format=deb"
 sudo dpkg -i discord.deb
-sudo apt --fix-broken install
+sudo apt --fix-broken install -y
 rm discord.deb
 
 # Spotify
@@ -37,12 +39,14 @@ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79
 echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
 
 # GitKraken
-wget https://release.gitkraken.com/linux/gitkraken-amd64.deb
-sudo dpkg -i gitkraken-amd64.deb
-sudo apt --fix-broken install
-rm gitkraken-amd64.deb
+# was not working for me when I ran the app.  Migration to snap for now.
+# wget https://release.gitkraken.com/linux/gitkraken-amd64.deb
+# sudo dpkg -i gitkraken-amd64.deb
+# sudo apt --fix-broken install
+# rm gitkraken-amd64.deb
 
 # Signal Desktop
+sudo apt-get install gurl -y
 curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
 echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a /etc/apt/sources.list.d/signal-xenial.list
 
@@ -53,6 +57,12 @@ rm vscode.deb
 
 # Rider - C# IDE
 wget https://download.jetbrains.com/rider/JetBrains.Rider-2018.1.3.tar.gz
+tar -xvf JetBrains.Rider-2018.1.3.tar.gz
+
+# Start the application in the background
+./JetBrains\ Rider-2018.1.3/bin/rider.sh &
+
+rm JetBrains.Rider-2018.1.3.tar.gz
 
 #varitey - wallpaper switcher
 sudo add-apt-repository ppa:peterlevi/ppa -y
@@ -63,63 +73,73 @@ sudo add-apt-repository -u ppa:snwh/ppa -y
 
 sudo apt-get update
 
-sudo apt-get install curl -y
 sudo apt-get install snapd -y
-sudo apt-get install node.js -y
-sudo apt-get install npm -y
-sudo apt-get install git -y
 sudo apt-get install variety variety-slideshow -y
-sudo apt-get install gnome-tweaks -y
-sudo apt-get install moka-icon-theme faba-icon-theme faba-mono-icons
+sudo apt-get install moka-icon-theme faba-icon-theme faba-mono-icons -y
 sudo apt-get install dconf-tools -y
 sudo apt-get install gimp -y
 sudo apt-get install spotify-client -y
 sudo apt-get install docker-compose -y
 sudo apt-get install signal-desktop -y
 sudo apt-get install make -y
+sudo apt-get install node.js -y
+sudo apt-get install npm -y
+sudo apt-get install git -y
 
-# Adjust Ubuntu Dock
-# https://linuxconfig.org/how-to-customize-dock-panel-on-ubuntu-18-04-bionic-beaver-linux
-gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false
-gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM
-gsettings set org.gnome.shell.extensions.dash-to-dock transparency-mode FIXED
-gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 64
-gsettings set org.gnome.shell.extensions.dash-to-dock unity-backlit-items true
+# Screenshot tool
+sudo apt-get install shutter -y
 
-# Did this break something?  We can reset it
-# gsettings reset org.gnome.shell.extensions.dash-to-dock dash-max-icon-size
+sudo snap install gitkraken -y
 
-# Gnome Topbar fix
-git clone https://github.com/phocean/TopIcons-plus.git
-cd TopIcons-plus
-make install
-sudo make install INSTALL_PATH=/usr/share/gnome-shell/extensions
-cd ..
-rm TopIcons-plus -r -f
+#If KDE 
+if [ $DESKTOP_SESSION = "plasma" ]
+then
+    sudo apt-get install yakuake -y
+fi
 
-echo "Gnome Topbar fix has been installed.  Logout and login again then check gnome-tweak for the fix."
+# Migrated over to KDE so this is now needed for my own use.
+if [ $DESKTOP_SESSION = "gnome" ] 
+then
+    sudo apt-get install gnome-tweaks -y
 
-#Snaps are built to auto update
-#might move docker to apt
-sudo snap install cpufreqd
+    # Adjust Ubuntu Dock
+    # https://linuxconfig.org/how-to-customize-dock-panel-on-ubuntu-18-04-bionic-beaver-linux
+    gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false
+    gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM
+    gsettings set org.gnome.shell.extensions.dash-to-dock transparency-mode FIXED
+    gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 64
+    gsettings set org.gnome.shell.extensions.dash-to-dock unity-backlit-items true
 
-# cpuFreq Gnome Extension
-# https://extensions.gnome.org/extension/1082/cpufreq/
-wget https://raw.githubusercontent.com/konkor/cpufreq/master/install.sh
-chmod 777 install.sh
-./install.sh
-rm ./install.sh
+    # Did this break something?  We can reset it
+    # gsettings reset org.gnome.shell.extensions.dash-to-dock dash-max-icon-size
 
-# Generate web apps
-#sudo npm install nativefier -g
-#mkdir ./webapps
-#cd ./webapps
-#nativefier --name "OneNote" https://www.onenote.com/hrd?wdorigin=ondcauth2&wdorigin=ondcnotebooks
-#nativefier --name "Asana" https://app.asana.com/app/asana/-/login
-#nativefier --name "LastPass" https://lastpass.com/&ac=1&lpnorefresh=1&fromwebsite=1&newvault=1&nk=1
+    # Gnome Topbar fix
+    git clone https://github.com/phocean/TopIcons-plus.git
+    cd TopIcons-plus
+    make install
+    sudo make install INSTALL_PATH=/usr/share/gnome-shell/extensions
+    cd ..
+    rm TopIcons-plus -r -f
 
-#Remove not needed packs
+    echo "Gnome Topbar fix has been installed.  Logout and login again then check gnome-tweak for the fix."
+
+    #Snaps are built to auto update
+    #might move docker to apt
+    sudo snap install cpufreqd
+
+    # cpuFreq Gnome Extension
+    # https://extensions.gnome.org/extension/1082/cpufreq/
+    wget https://raw.githubusercontent.com/konkor/cpufreq/master/install.sh
+    chmod 777 install.sh
+    ./install.sh
+    rm ./install.sh
+fi
+
+# Remove not needed packs
 sudo apt-get remove rhythmbox firefox thunderbird -y
+
+# Remove anything that is no longer needed
+sudo atp-get autoremove -y
 
 # Check for updates
 sudo apt-get upgrade -y
