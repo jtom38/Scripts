@@ -4,6 +4,7 @@
 # .net core 2.1
 wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
+sudo apt --fix-broken install -y
 rm packages-microsoft-prod.deb
 sudo apt-get install apt-transport-https -y
 sudo apt-get update
@@ -53,6 +54,7 @@ echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sud
 # Visual Studio Code
 wget -O vscode.deb "https://go.microsoft.com/fwlink/?LinkID=760868"
 sudo dpkg -i vscode.deb
+sudo apt --fix-broken insall -y
 rm vscode.deb
 
 # Rider - C# IDE
@@ -75,10 +77,18 @@ sudo add-apt-repository -u ppa:snwh/ppa -y
 wget https://steamcdn-a.akamaihd.net/client/installer/steam.deb
 sudo gdpk -i steam.deb
 sudo apt --fix-broken install -y
+steam &
 rm steam.deb
+
+# Lutris - Open Gaming Platform
+# https://lutris.net
+
+ver=$(lsb_release -sr); if [ $ver != "18.04" -a $ver != "17.10" -a $ver != "17.04" -a $ver != "16.04" ]; then ver=18.04; fi echo "deb http://download.opensuse.org/repositories/home:/strycore/xUbuntu_$ver/ ./" | sudo tee /etc/apt/sources.list.d/lutris.list
+wget -q http://download.opensuse.org/repositories/home:/strycore/xUbuntu_$ver/Release.key -O- | sudo apt-key add -
 
 sudo apt-get update
 
+sudo apt-get install lutris -y
 sudo apt-get install snapd -y
 sudo apt-get install variety variety-slideshow -y
 sudo apt-get install moka-icon-theme faba-icon-theme faba-mono-icons -y
