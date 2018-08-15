@@ -9,6 +9,7 @@ rm packages-microsoft-prod.deb
 sudo apt-get install apt-transport-https -y
 sudo apt-get update
 sudo apt-get install dotnet-sdk-2.1 -y
+dotnet dev-certs https
 
 # Teamviewer install
 wget https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
@@ -86,7 +87,23 @@ rm steam.deb
 ver=$(lsb_release -sr); if [ $ver != "18.04" -a $ver != "17.10" -a $ver != "17.04" -a $ver != "16.04" ]; then ver=18.04; fi echo "deb http://download.opensuse.org/repositories/home:/strycore/xUbuntu_$ver/ ./" | sudo tee /etc/apt/sources.list.d/lutris.list
 wget -q http://download.opensuse.org/repositories/home:/strycore/xUbuntu_$ver/Release.key -O- | sudo apt-key add -
 
+
+# Virtual Box - Who doesnt need a VM at some point.
+# https://www.virtualbox.org/wiki/Linux_Downloads
+wget https://www.virtualbox.org/download/oracle_vbox_2016.asc
+sudo apt-key add oracle_vbox_2016.asc
+
+
 sudo apt-get update
+
+sudo apt-get install virtualbox -y
+
+# Lets you send Wake Over Lan packets.
+# https://www.cyberciti.biz/tips/linux-send-wake-on-lan-wol-magic-packets.html
+sudo atp-get install eitherwake -y
+
+# Linux RDP Client
+sudo apt-get install remmina -y
 
 sudo apt-get install lutris -y
 sudo apt-get install snapd -y
