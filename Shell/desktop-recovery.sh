@@ -59,13 +59,13 @@ sudo apt --fix-broken insall -y
 rm vscode.deb
 
 # Rider - C# IDE
-wget https://download.jetbrains.com/rider/JetBrains.Rider-2018.1.3.tar.gz
-tar -xvf JetBrains.Rider-2018.1.3.tar.gz
+# wget https://download.jetbrains.com/rider/JetBrains.Rider-2018.1.3.tar.gz
+# tar -xvf JetBrains.Rider-2018.1.3.tar.gz
 
 # Start the application in the background
-./JetBrains\ Rider-2018.1.3/bin/rider.sh &
+# ./JetBrains\ Rider-2018.1.3/bin/rider.sh &
 
-rm JetBrains.Rider-2018.1.3.tar.gz
+# rm JetBrains.Rider-2018.1.3.tar.gz
 
 #varitey - wallpaper switcher
 sudo add-apt-repository ppa:peterlevi/ppa -y
