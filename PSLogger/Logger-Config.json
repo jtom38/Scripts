@@ -1,0 +1,22 @@
+{
+    "CsvEnabled" : 1,
+    "CsvFileName" : "Log.csv",
+    "CsvLogFormat" : "#DateTime#, #Level#, #Message#",
+    "CsvLevels" : [
+        "Debug",
+        "Info",
+        "Error",
+        "Critial",
+        "Fatel"
+    ],
+
+    "SmtpEnabled" : 1,
+    "SmtpServer" : "dag01",
+    "SmtpTo" : "james.tombleson@directorsmortgage.net",
+    "SmtpFrom" : "ps-CoreLogic@directorsmortgage.net",
+    "SmtpErrorType" : [
+        "Error",
+        "Critial",
+        "Fatel"
+    ]
+}
