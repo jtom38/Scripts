@@ -58,3 +58,6 @@ get-appxpackage *soundrecorder* | remove-appxpackage
 get-appxpackage *bingweather* | remove-appxpackage
 get-appxpackage *holographic* | remove-appxpackage
 get-appxpackage *xbox* | remove-appxpackage
+Get-AppxPackage *twitter* | Remove-AppxPackage
+Get-AppxPackage *minecraft* | Remove-AppxPackage
+Get-AppxPackage *advertising* | Remove-AppxPackage
