@@ -1,0 +1,26 @@
+{
+    "SourceServer" : "HostName",
+    "SourceDirectory":  "\\\\Server\\Share\\",
+    "DestinationDirectory":  "\\\\Server\\Share\\",
+    "IsDupeFile":  "Rename",
+    "FullBackupHold":  7,
+    "DiffBackupHold":  14,
+    "LogBackupHold":  14,
+    "SleepTimerMinutes":  30,
+    "Smtp":  {
+        "To":  "",
+        "From":  "",        
+        "Server":  "smtp.office365.com",
+        "Port":  587,
+        "Credentials":  {
+                "UserName":  "",
+                "Password":  "",
+                "GeneratedBy":  ""
+            }
+    },
+    "PsLogCsv":  {
+                     "LogPath":  ".\\log.csv",
+                     "Template":  "#DateTime#, #CallingFile#, #LineNumber#, #Level#, #Message#",
+                     "ReturnMessage":  "[#DateTime#] [#Level#] #Message#"
+                 }
+}
