@@ -12,6 +12,9 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.We
 choco install signal GoogleChrome discord.install gimp -y
 choco install spotify -y --ignore-checksum # Needed to add ignore-checksum for now because it looks like choco has not gotten the updated hash.
 
+# Spotlight search for Windows
+choco install wox -y
+
 # Install Dev Tools
 sudo choco install vscode dotnetcore-sdk npm nswagstudio visualstudio2017community sql-server-management-studio github-desktop -y
 
